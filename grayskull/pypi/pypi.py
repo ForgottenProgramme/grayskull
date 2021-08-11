@@ -108,8 +108,7 @@ class PyPi(AbstractRecipeModel):
             metadata["sdist_path"] = temp_folder
             return metadata
 
-    @staticmethod
-    def _merge_sdist_metadata(setup_py: dict, setup_cfg: dict) -> dict:
+    def _merge_sdist_metadata(self, setup_py: dict, setup_cfg: dict) -> dict:
         """This method will merge the metadata present in the setup.py and
         setup.cfg. It is an auxiliary method.
 
@@ -139,6 +138,8 @@ class PyPi(AbstractRecipeModel):
                 result["setup_requires"].remove("setuptools-scm")
         if "compilers" in result:
             result["compilers"] = get_full_list("compilers")
+        if "scripts" in result:
+            self._is_arch = True
         return result
 
     @staticmethod
