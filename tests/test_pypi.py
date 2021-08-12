@@ -660,4 +660,3 @@ def test_noarch_metadata():
 def test_arch_metadata():
     recipe = PyPi(name="remove_dagmc_tags", version="0.0.5")
     assert "noarch" not in recipe["build"]
-
