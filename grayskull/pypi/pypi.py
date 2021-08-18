@@ -552,6 +552,12 @@ class PyPi(AbstractRecipeModel):
         version = ""
         if self["package"]["version"].values:
             version = self.get_var_content(self["package"]["version"].values[0])
+        if name.startswith("http://"):
+            print_msg(
+                f"Sorry. Grayskull presently only supports PyPI packages."
+            )
+            sys.exit()
+
         pypi_metadata = self._get_pypi_metadata(name, version)
         sdist_metadata = self._get_sdist_metadata(
             sdist_url=pypi_metadata["sdist_url"], name=name
