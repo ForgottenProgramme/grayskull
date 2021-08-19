@@ -108,15 +108,6 @@ class PyPi(AbstractRecipeModel):
             metadata["sdist_path"] = temp_folder
             return metadata
 
-    def _get_github_metadata(self, name: str):
-        """method responsible to get metadata from github repository
-        """
-        temp_folder = mkdtemp(prefix=f"grayskull-{name}-")
-        pkg_name = name.split("/")[-1]
-        path_pkg = os.path.join(temp_folder, pkg_name)
-
-
-
     @staticmethod
     def _merge_sdist_metadata(setup_py: dict, setup_cfg: dict) -> dict:
         """This method will merge the metadata present in the setup.py and
@@ -563,7 +554,8 @@ class PyPi(AbstractRecipeModel):
             version = self.get_var_content(self["package"]["version"].values[0])
 
         if name.startswith(("http://" , "https://")):
-            sdist_metadata = self._get_github_metadata(name)
+            name+= "/zipball/master"
+            sdist_metadata = self._get_sdist_metadata(sdist_url= name)
 
         else:
             pypi_metadata = self._get_pypi_metadata(name, version)
