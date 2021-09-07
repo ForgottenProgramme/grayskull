@@ -59,6 +59,18 @@ class PyPi(AbstractRecipeModel):
         self["build"]["script"] = "<{ PYTHON }} -m pip install . -vv"
 
     @staticmethod
+    def __generate_git_archive_tarball_url(git_url: str) -> str:
+        """This method takes a github repository url and returns the archive
+        tarball url for that repository.
+
+        :param git_url: github repository url
+        :return: github repository archive tarball url
+        """
+        archive_tarball_url = git_url + "/archive/main.tar.gz"
+        return archive_tarball_url
+
+
+    @staticmethod
     def _download_sdist_pkg(sdist_url: str, dest: str):
         """Download the sdist package
 
