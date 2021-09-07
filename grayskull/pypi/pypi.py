@@ -59,7 +59,7 @@ class PyPi(AbstractRecipeModel):
         self["build"]["script"] = "<{ PYTHON }} -m pip install . -vv"
 
     @staticmethod
-    def __generate_git_archive_tarball_url(git_url: str) -> str:
+    def _generate_git_archive_tarball_url(git_url: str) -> str:
         """This method takes a github repository url and returns the archive
         tarball url for that repository.
 
