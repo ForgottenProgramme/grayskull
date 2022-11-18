@@ -1,4 +1,4 @@
-# Grayskull
+# Mahe's Grayskull
 -------------
 ![Tests](https://github.com/conda-incubator/grayskull/workflows/Tests/badge.svg?branch=master) ![Checkers](https://github.com/conda-incubator/grayskull/workflows/Checkers/badge.svg?branch=master) ![Deployment (PyPI)](https://github.com/conda-incubator/grayskull/workflows/Upload%20Package%20to%20PyPI/badge.svg)
 
